@@ -18,7 +18,7 @@
 
 body {
     background-color: var(--body-bgc);
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +31,7 @@ h1 {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: rgb(0, 0, 0);
+    color: var(--highlight-color);
     margin-bottom: 1%;
 }
 
@@ -61,7 +61,7 @@ form {
 .label-container {
     width: 100%;
     display: grid;
-    gap: 0.4rem;
+    gap: 2rem;
     border: 1px dashed lightgray;
     padding: 1rem;
     border-radius: 4px;
@@ -138,16 +138,15 @@ button:hover {
         font-size: 14px;
         margin: 10px;
     }
+
+    .multi-column {
+        gap: 1rem;
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 480px) {
     body {
         font-size: 12px;
-    }
-
-    .multi-column {
-        gap: 1rem;
-        flex-direction: column;
-        margin-bottom: 10%;
     }
 }

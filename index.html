@@ -5,11 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Acessor de CV</title>
         <link rel="stylesheet" href="styles.css" />
-        <script src="script.js"></script>
+        <script src="script.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.13.216/pdf.min.js"></script>
     </head>
     <body>
         <main>
-            <h1>Extrator de Currículos</h1>
+            <h1>Extrator de Currículos - Diggi Systems</h1>
             <form action="">
                 <p class="info">
                     Coloque as infomações necessárias para obter a análise de
@@ -23,6 +24,7 @@
                             name="cargo"
                             id="cargo"
                             placeholder="cargo:"
+                            required
                         />
                     </p>
                     <p class="label-container">
@@ -32,16 +34,19 @@
                             name="segmento"
                             id="segmento"
                             placeholder="segmento:"
+                            required
                         />
                     </p>
                 </div>
-                <p class="label-container">
+                <p class="label-container" style="margin-bottom: 1%">
                     <label for="segmento">Anexe seu currículo:</label>
                     <input
                         type="file"
                         name="cv"
                         id="cv"
                         placeholder="currículo:"
+                        accept="application/pdf"
+                        required
                     />
                 </p>
                 <button type="submit">Enviar</button>
