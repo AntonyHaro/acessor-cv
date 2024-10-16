@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Acessor de CV</title>
+        <link rel="stylesheet" href="styles.css" />
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <main>
+            <h1>Extrator de Currículos</h1>
+            <form action="">
+                <p class="info">
+                    Coloque as infomações necessárias para obter a análise de
+                    seu currículo.
+                </p>
+                <div class="multi-column">
+                    <p class="label-container">
+                        <label for="cargo">Cargo desejado:</label>
+                        <input
+                            type="text"
+                            name="cargo"
+                            id="cargo"
+                            placeholder="cargo:"
+                        />
+                    </p>
+                    <p class="label-container">
+                        <label for="segmento">Segmento desejado:</label>
+                        <input
+                            type="text"
+                            name="segmento"
+                            id="segmento"
+                            placeholder="segmento:"
+                        />
+                    </p>
+                </div>
+                <p class="label-container">
+                    <label for="segmento">Anexe seu currículo:</label>
+                    <input
+                        type="file"
+                        name="cv"
+                        id="cv"
+                        placeholder="currículo:"
+                    />
+                </p>
+                <button type="submit">Enviar</button>
+            </form>
+        </main>
+    </body>
+</html>
