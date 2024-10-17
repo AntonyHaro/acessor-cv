@@ -7,7 +7,7 @@ async function handleSubmit(event) {
     const formData = new FormData(event.target);
     const pdfFile = formData.get("curriculo");
 
-    if (pdfFile) {
+    try {
         const pdfContent = await extractTextFromPDF(pdfFile);
 
         const json = {
@@ -16,7 +16,9 @@ async function handleSubmit(event) {
             curriculo: pdfContent,
         };
 
-        console.log(json);
+        sendJSONToServer(json);
+    } catch (error) {
+        console.error(error);
     }
 }
 
@@ -45,7 +47,7 @@ async function sendJSONToServer(json) {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(json), // send the json to the server
+        body: JSON.stringify(json),
     });
 
     return await response.json();
