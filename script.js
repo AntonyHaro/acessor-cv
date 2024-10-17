@@ -1,29 +1,24 @@
-document.querySelector("form").addEventListener("submit", async (event) => {
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "//cdnjs.cloudflare.com/ajax/libs/pdf.js/3.5.141/pdf.worker.min.js";
+
+async function handleSubmit(event) {
     event.preventDefault();
 
     const formData = new FormData(event.target);
-    const pdfFile = formData.get("cv"); // get the cv file
-
-    console.log(formData);
+    const pdfFile = formData.get("curriculo");
 
     if (pdfFile) {
-        const textContent = await extractTextFromPDF(pdfFile); // extract the file
+        const pdfContent = await extractTextFromPDF(pdfFile);
 
-        // create the json
         const json = {
             cargo: formData.get("cargo"),
             segmento: formData.get("segmento"),
-            curriculo: textContent,
+            curriculo: pdfContent,
         };
 
-        // send to the server
-        // const response = await sendJSONToServer(json);
-        // console.log(response);
         console.log(json);
     }
-
-    console.log("MSINAODNSUIABUJABSDIUB")
-});
+}
 
 async function extractTextFromPDF(pdfFile) {
     const pdfData = await pdfFile.arrayBuffer();
@@ -45,7 +40,7 @@ async function extractTextFromPDF(pdfFile) {
 }
 
 async function sendJSONToServer(json) {
-    const response = await fetch("/your-api-endpoint", {
+    const response = await fetch("/send-json", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -55,3 +50,21 @@ async function sendJSONToServer(json) {
 
     return await response.json();
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const inputs = document.querySelectorAll('input[type="text"]');
+
+    inputs.forEach((input) => {
+        input.addEventListener("focus", (event) => {
+            event.target.closest(".label-container").classList.add("focused");
+        });
+
+        input.addEventListener("blur", (event) => {
+            event.target
+                .closest(".label-container")
+                .classList.remove("focused");
+        });
+    });
+
+    document.querySelector("form").addEventListener("submit", handleSubmit);
+});
