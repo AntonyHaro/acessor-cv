@@ -62,14 +62,15 @@ form {
     width: 100%;
     display: grid;
     gap: 2rem;
-    border: 1px dashed lightgray;
+    background-color: hsl(212, 5%, 91%);
     padding: 1rem;
     border-radius: 4px;
     transition: 0.2s;
 }
 
 .label-container.focused {
-    border-color: gray;
+    box-shadow: -1px 1px 4px rgba(0, 0, 0, 0.25);
+    transform: translateY(-3px);
 }
 
 .multi-column {
@@ -99,7 +100,7 @@ input::placeholder {
 }
 
 input:focus {
-    transform: translateY(-0.2rem);
+    /* transform: translateY(-0.2rem); */
     border-color: var(--highlight-color);
 }
 
